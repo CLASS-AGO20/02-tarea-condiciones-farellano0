@@ -18,6 +18,19 @@ export default class App {
         }
     }
 
+    calcularSalario(tipoTrabajador, horasTrabajadas){
+        switch(tipoTrabajador){
+            case 1:
+                return horasTrabajadas * 20;
+            case 2:
+                return horasTrabajadas * 22;
+            case 3:
+                return horasTrabajadas * 25;
+            default:
+                return -1;
+        }
+    }
+
 
 
 }
@@ -32,3 +45,9 @@ console.log(app.esPar(0));
 console.log("Probando esMultiplo()");
 console.log(app.esMultiplo(10, 5));
 console.log(app.esMultiplo(9, 4));
+
+console.log("Probando calcularSalario()");
+console.log(app.calcularSalario(1, 8));
+console.log(app.calcularSalario(2, 8));
+console.log(app.calcularSalario(3, 8));
+console.log(app.calcularSalario(4, 8));
