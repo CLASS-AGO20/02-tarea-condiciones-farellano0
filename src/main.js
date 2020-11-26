@@ -94,6 +94,95 @@ export default class App {
                 return -1;
         }
     }
+    costoRenta(peliculas, dia){
+        switch(dia){
+            case 1:
+                let x = peliculas - (peliculas % 3);
+                let x1 = peliculas - x;
+                if(peliculas % 3 == 0){
+                return 60 * (x / 3);
+            } else if (peliculas % 3 != 0 && peliculas > 3){
+                return 60 * (x / 3) + (x1 * 25);
+            } else {
+                return peliculas * 25;
+            }
+            case 2:
+                let y = Math.round(peliculas / 2);
+                let y1 = Math.round(peliculas / 2) - 1;
+                if(peliculas % 2 == 0){
+                    return y * 25;
+                } else if (peliculas % 2 != 0 && peliculas > 2){
+                    return y1 * 25 + (peliculas % 2 * 25);  
+                } else {
+                    return peliculas * 25;
+                }
+            case 3:
+                let pdescuento = 25 - (25 * 0.15);
+                return peliculas * pdescuento;
+            case 4:
+                let z = Math.round(peliculas / 2);
+                let z1 = Math.round(peliculas / 2) - 1;
+                if(peliculas % 2 == 0){
+                    return z * 25;
+                } else if (peliculas % 2 != 0 && peliculas > 2){
+                    return z1 * 25 + (peliculas % 2 * 25);  
+                } else {
+                    return peliculas * 25;
+                }
+            case 5:
+                let a = peliculas - (peliculas % 3);
+                let a1 = peliculas - a;
+                if(peliculas % 3 == 0){
+                return 60 * (a / 3);
+            } else if (peliculas % 3 != 0 && peliculas > 3){
+                return 60 * (a / 3) + (a1 * 25);
+            } else {
+                return peliculas * 25;
+            }
+            case 6:
+                return peliculas * 25;
+            case 7:
+                return peliculas * 25;
+            default:
+                return -1;
+        }
+    }
+    costoBoletos(boletos, zona){
+        switch(zona){
+            case 1:
+                let costototal = boletos * 300;
+                if(costototal < 2000){
+                    return costototal;
+                } else {
+                    return costototal - (costototal * 0.07);
+                }
+            case 2:
+                let costototal2 = boletos * 450;
+                if(costototal2 < 2000){
+                    return costototal2;
+                } else {
+                    return costototal2 - (costototal2 * 0.07);
+                }
+            case 3:
+                let costototal3 = boletos * 700;
+                if(costototal3 < 2000){
+                    return costototal3;
+                } else {
+                    return costototal3 - (costototal3 * 0.07);
+                }
+            default:
+                return -1;
+        }
+    }
+    estaEnRango(limiteInicial, limiteFinal, numero){
+        if(numero > limiteInicial && numero < limiteFinal){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
 
 
@@ -143,3 +232,23 @@ console.log(app.calcular(7,8,'-'));
 console.log(app.calcular(7,8,'*'));
 console.log(app.calcular(7,8,'/'));
 console.log(app.calcular(7,8,'%'));
+
+console.log("Probando costoRenta()");
+console.log(app.costoRenta(365, 1));
+console.log(app.costoRenta(386, 2));
+console.log(app.costoRenta(7, 3));
+console.log(app.costoRenta(386, 4));
+console.log(app.costoRenta(7, 5));
+console.log(app.costoRenta(7, 6));
+console.log(app.costoRenta(7, 7));
+console.log(app.costoRenta(7, 8));
+
+console.log("costoBoletos()");
+console.log(app.costoBoletos(7, 1));
+console.log(app.costoBoletos(7, 2));
+console.log(app.costoBoletos(7, 3));
+console.log(app.costoBoletos(7, 4));
+
+console.log("estaEnRango()");
+console.log(app.estaEnRango(10, 20, 15));
+console.log(app.estaEnRango(10, 20, 7));
